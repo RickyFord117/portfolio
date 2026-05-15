@@ -1,17 +1,18 @@
+import { motion } from "framer-motion";
 import { SectionContainer } from "../ui/SectionContainer";
 import { ProjectCard } from "../ui/ProjectCard";
+import { ScrollReveal } from "../ui/ScrollReveal";
 
-// 1. Define the exact shape of our project data so TypeScript doesn't guess
+// ... (Keep your ProjectItem type and PROJECTS array exactly the same as before) ...
 type ProjectItem = {
   title: string;
   description: string;
   imageUrl: string;
   tags: string[];
-  githubUrl?: string; // The '?' makes it optional
-  liveUrl?: string; // The '?' makes it optional
+  githubUrl?: string;
+  liveUrl?: string;
 };
 
-// 2. Apply the type to our array
 const PROJECTS: ProjectItem[] = [
   {
     title: "Polidex AI RAG Platform",
@@ -45,29 +46,48 @@ const PROJECTS: ProjectItem[] = [
 export function ProjectsSection() {
   return (
     <SectionContainer id='projects'>
-      <div className='mb-12 md:text-center'>
-        <h2 className='text-3xl md:text-4xl font-bold text-slate-100 mb-4'>
-          Featured Work
-        </h2>
-        <p className='text-lg text-slate-400 max-w-2xl md:mx-auto'>
-          A selection of enterprise streaming systems, advanced AI
-          architectures, and independent apps shipped directly to production.
-        </p>
-      </div>
+      <ScrollReveal>
+        <div className='mb-12 md:text-center'>
+          <h2 className='text-3xl md:text-4xl font-bold text-slate-100 mb-4'>
+            Featured Work
+          </h2>
+          <p className='text-lg text-slate-400 max-w-2xl md:mx-auto'>
+            A selection of enterprise streaming systems, advanced AI
+            architectures, and independent apps shipped directly to production.
+          </p>
+        </div>
+      </ScrollReveal>
 
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+      <motion.div
+        className='grid grid-cols-1 md:grid-cols-2 gap-8'
+        initial='hidden'
+        whileInView='visible'
+        viewport={{ once: true, margin: "-5%" }}
+        variants={{
+          visible: { transition: { staggerChildren: 0.15 } },
+          hidden: {},
+        }}
+      >
         {PROJECTS.map((project) => (
-          <ProjectCard
+          <motion.div
             key={project.title}
-            title={project.title}
-            description={project.description}
-            imageUrl={project.imageUrl}
-            tags={project.tags}
-            githubUrl={project.githubUrl}
-            liveUrl={project.liveUrl}
-          />
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+            }}
+          >
+            <ProjectCard
+              title={project.title}
+              description={project.description}
+              imageUrl={project.imageUrl}
+              tags={project.tags}
+              githubUrl={project.githubUrl}
+              liveUrl={project.liveUrl}
+              className='h-full' // Ensures cards in the same row are the same height
+            />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </SectionContainer>
   );
 }
