@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+/* Define our custom theme variables directly in CSS for Tailwind v4 */
+@theme {
+  --color-brand-primary: #3b82f6; /* A crisp blue for primary CTAs/highlights */
+  --color-brand-secondary: #8b5cf6; /* A purple accent for gradients */
+
+  --font-sans:
+    "Inter", system-ui, sans-serif; /* Clean, modern developer typography */
+}
+
+@layer base {
+  /* Enforcing the dark-mode preferred aesthetic globally */
+  body {
+    @apply bg-slate-950 text-slate-100 antialiased selection:bg-brand-primary selection:text-white;
+  }
+}
