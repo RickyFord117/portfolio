@@ -29,7 +29,7 @@ const PROJECTS: ProjectItem[] = [
       "Lead Engineer managing massive-scale video-on-demand applications for high-profile clients. Handled component re-architecture, complex analytics integrations (Adobe, Conviva), and deployment to millions of Roku, LG, and Samsung devices.",
     imageUrl:
       "https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=1000&auto=format&fit=crop",
-    tags: ["BrightScript", "React/Redux", "TypeScript", "NodeJS"],
+    tags: ["Roku", "BrightScript", "React/Redux", "TypeScript", "NodeJS"],
     liveUrl: "#",
   },
   {
@@ -38,7 +38,7 @@ const PROJECTS: ProjectItem[] = [
       "A fully independent mobile application allowing users to track Auroras via custom APIs. Built end-to-end including a Supabase backend with edge functions, Google AdMob implementation, and RevenueCat subscription paywalls.",
     imageUrl:
       "https://images.unsplash.com/photo-1531366936337-7785e0bf1bb8?q=80&w=1000&auto=format&fit=crop",
-    tags: ["Flutter", "Supabase", "Firebase", "RevenueCat"],
+    tags: ["Flutter", "Supabase", "Firebase", "RevenueCat", "Google AdMob"],
     liveUrl: "https://play.google.com/store",
   },
 ];
