@@ -43,6 +43,16 @@ function LinkedinIcon({ size = 24 }: { size?: number }) {
 }
 
 export function ContactSection() {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name");
+    const message = formData.get("message");
+
+    const mailtoLink = `mailto:rg.henriques@hotmail.com?subject=Portfolio Inquiry from ${name}&body=${message}`;
+    window.location.href = mailtoLink;
+  };
+
   return (
     <SectionContainer
       id='contact'
@@ -75,10 +85,10 @@ export function ContactSection() {
                 <div>
                   <p className='font-medium text-slate-200'>Email</p>
                   <a
-                    href='mailto:hello@islandertech.com'
+                    href='mailto:rg.henriques@hotmail.com'
                     className='text-slate-400 hover:text-brand-primary transition-colors'
                   >
-                    hello@islandertech.com
+                    rg.henriques@hotmail.com
                   </a>
                 </div>
               </div>
@@ -89,7 +99,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <p className='font-medium text-slate-200'>Location</p>
-                  <p className='text-slate-400'>Remote / Global</p>
+                  <p className='text-slate-400'>London, UK / Remote</p>
                 </div>
               </div>
             </div>
@@ -99,13 +109,13 @@ export function ContactSection() {
               <p className='font-medium text-slate-200 mb-4'>Connect with me</p>
               <div className='flex gap-4'>
                 <a
-                  href='#'
+                  href='https://github.com/RickyFord117'
                   className='p-3 rounded-lg bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-white transition-colors'
                 >
                   <GithubIcon />
                 </a>
                 <a
-                  href='#'
+                  href='https://www.linkedin.com/in/ricardohenriques-548504ab'
                   className='p-3 rounded-lg bg-slate-800 text-slate-400 hover:bg-[#0A66C2] hover:text-white transition-colors'
                 >
                   <LinkedinIcon />
@@ -117,7 +127,7 @@ export function ContactSection() {
           {/* Contact Form */}
           <form
             className='space-y-6 bg-slate-900/50 p-6 sm:p-8 rounded-2xl border border-slate-800'
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={handleSubmit}
           >
             <div className='space-y-2'>
               <label

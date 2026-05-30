@@ -43,9 +43,6 @@ export function Navbar({ className }: { className?: string }) {
               </li>
             ))}
           </ul>
-          <Button variant='primary' size='sm'>
-            Get in Touch
-          </Button>
         </nav>
 
         {/* Mobile Menu Toggle */}

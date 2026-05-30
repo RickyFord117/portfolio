@@ -3,14 +3,17 @@ import { SectionContainer } from "../ui/SectionContainer";
 import { ProjectCard } from "../ui/ProjectCard";
 import { ScrollReveal } from "../ui/ScrollReveal";
 
-// ... (Keep your ProjectItem type and PROJECTS array exactly the same as before) ...
+import aurora1 from "../../assets/projects/aurora1.png";
+import aurora2 from "../../assets/projects/aurora2.png";
+
 type ProjectItem = {
   title: string;
   description: string;
-  imageUrl: string;
+  imageUrl?: string;
+  appScreenshots?: string[];
   tags: string[];
   githubUrl?: string;
-  liveUrl?: string;
+  playStoreUrl?: string;
 };
 
 const PROJECTS: ProjectItem[] = [
@@ -21,7 +24,6 @@ const PROJECTS: ProjectItem[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1000&auto=format&fit=crop",
     tags: ["ReactJS", "Python FastAPI", "Qdrant", "Neo4j", "Google Cloud"],
-    liveUrl: "#",
   },
   {
     title: "Enterprise VOD Platforms",
@@ -30,16 +32,15 @@ const PROJECTS: ProjectItem[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=1000&auto=format&fit=crop",
     tags: ["Roku", "BrightScript", "React/Redux", "TypeScript", "NodeJS"],
-    liveUrl: "#",
   },
   {
     title: "AuroraNow Space Weather",
     description:
       "A fully independent mobile application allowing users to track Auroras via custom APIs. Built end-to-end including a Supabase backend with edge functions, Google AdMob implementation, and RevenueCat subscription paywalls.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1531366936337-7785e0bf1bb8?q=80&w=1000&auto=format&fit=crop",
+    appScreenshots: [aurora1, aurora2],
     tags: ["Flutter", "Supabase", "Firebase", "RevenueCat", "Google AdMob"],
-    liveUrl: "https://play.google.com/store",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.auroranow.android&pli=1", // Added Play Store URL
   },
 ];
 
@@ -80,9 +81,10 @@ export function ProjectsSection() {
               title={project.title}
               description={project.description}
               imageUrl={project.imageUrl}
+              appScreenshots={project.appScreenshots}
               tags={project.tags}
               githubUrl={project.githubUrl}
-              liveUrl={project.liveUrl}
+              playStoreUrl={project.playStoreUrl}
               className='h-full' // Ensures cards in the same row are the same height
             />
           </motion.div>
